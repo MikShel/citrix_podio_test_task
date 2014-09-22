@@ -1,5 +1,12 @@
-# Object file
-*.o
+# Idea files
+.idea
+*.iml
+.DS_Store
 
-# Ada Library Information
-*.ali
+# gradle
+.gradle
+gradlew*
+gradle
+
+# build
+build
