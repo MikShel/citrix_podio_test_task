@@ -3,6 +3,7 @@ package podio.test.cucumber.stepdefinitions;
 
 import cucumber.api.java.en.Then;
 import podio.steps.SignInStepsReal;
+import support.selenium.Browser;
 
 public class SignInSteps {
 
@@ -10,10 +11,12 @@ public class SignInSteps {
     SignInStepsReal signInSteps;
 
 
-    @Then("^I sign in as \\\"([^\\\"]*)\\\"$")
-    public  void i_see_todays_weather (String town){
+    @Then("^I sign in as \"([^\"]*)\"$")
+    public  void i_sign_in_as(String name){
+        Browser.get();
+        System.out.println("!!!!!!!!!!");
         signInSteps = new SignInStepsReal();
-        signInSteps.searchTown(town);
+        signInSteps.signIn(name);
     }
 
 }

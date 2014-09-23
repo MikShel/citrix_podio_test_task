@@ -13,12 +13,14 @@ public class SignInStepsReal extends StepBase {
 
 
     public SignInStepsReal() {
-        commonPage = new CommonPageImpl();
-        homePage = new HomePageImpl();
+
+            commonPage = new CommonPageImpl();
+            homePage = new HomePageImpl();
+
 
     }
 
-    public void searchTown(String town) {
+    public void signIn(String town) {
         homePage.searchTown(town);
     }
 
