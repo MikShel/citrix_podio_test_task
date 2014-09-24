@@ -6,7 +6,7 @@ Test task for Citrix team in denmark
 How to run tests
 
 On Mac
- ./gradlew cucumber #"-Dparameters"
+ ./gradlew cucumber #"-Pparameters"
 
  login - default 'no' //email, that will be used for tests
  pass - default 'no' //pass, that will be used for tests
@@ -18,5 +18,5 @@ On Mac
 On Linux
 Change binaries of drivers in drivers folder
 
- ./gradlew cucumber #"-Dparameters"
+ ./gradlew cucumber #"-Pparameters"
 

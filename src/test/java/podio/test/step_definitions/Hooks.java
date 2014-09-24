@@ -6,6 +6,8 @@ import cucumber.api.java.Before;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import podio.test.support.Browser;
+import podio.test.support.drivers.ChromeDriver;
+import podio.test.support.drivers.PhantomJSDriver;
 
 
 /**
@@ -32,6 +34,17 @@ public class Hooks {
             }
         } finally {
             Browser.getDriver().quit();
+            String browser = System.getProperty("browser");
+            switch (browser) {
+                case "ff":
+                    break;
+                case "pjs":
+                    PhantomJSDriver.stopService();
+                    break;
+                case "ghm":
+                    ChromeDriver.stopService();
+                    break;
+            }
         }
     }
 

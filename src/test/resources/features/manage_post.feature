@@ -6,12 +6,12 @@ Feature: ManagePost
   Background:
     Given I work with the system
 
-  @test
+  @Test
   Scenario Outline: Create post in active stream
     Given I create status post with "<attach>" attachment for "<space>"
     Then The post should appear in stream with "<attach>"
 
-  Examples: possible attachments for Employee Network space
+  Examples:
     | attach    | space            |
     | link	    | Employee Network |
     | question	| Employee Network |

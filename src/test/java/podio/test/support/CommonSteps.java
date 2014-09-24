@@ -2,12 +2,12 @@ package podio.test.support;
 
 import ch.lambdaj.Lambda;
 import org.hamcrest.Matchers;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.WrapsElement;
-import ru.yandex.qatools.htmlelements.element.Form;
-import ru.yandex.qatools.htmlelements.element.Link;
-import ru.yandex.qatools.htmlelements.element.Select;
-import ru.yandex.qatools.htmlelements.element.TextInput;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.qatools.htmlelements.element.*;
 
 import java.util.List;
 import java.util.Map;
@@ -91,6 +91,22 @@ public class CommonSteps {
         assertThat(element, should(not(isDisplayed())).whileWaitingUntil(timeoutHasExpired()));
     }
 
+    public static void waitForElementWithText(String css, String text){
+        new WebDriverWait(Browser.getDriver(), 30)
+                .until(ExpectedConditions.textToBePresentInElementLocated(
+                        By.cssSelector(css), text));
+    }
+
+    public static void waitForTextAppearInElement(TextInput element, String text){
+        assertThat(element.getText(), should(equalTo(text)).whileWaitingUntil(timeoutHasExpired()));
+    }
+
+    public static void waitForElementFromListWithText(List<? extends HtmlElement> elements, String text){
+        System.err.println("!!!!! Text " + text);
+        System.err.println("!!!!! Element " + elements.get(0).getWrappedElement().getText());
+        assertThat(elements.get(0).getWrappedElement().getText(), should(containsString(text)).whileWaitingUntil(timeoutHasExpired()));
+    }
+
     public static void selectOption(Select select, String option) {
         assumeIfElementNotPresent(select);
         List<String> extract =
@@ -99,6 +115,10 @@ public class CommonSteps {
         assertThat(extract, Matchers.hasItem(option));
         select.selectByVisibleText(option);
         assertThat(select.getFirstSelectedOption().getText(), Matchers.equalTo(option));
+    }
+
+    public void waitForTextAppearOnPage(String text) {
+        assertThat(Browser.getDriver().getPageSource(), should(containsString(text)).whileWaitingUntil(timeoutHasExpired()));
     }
 }
 

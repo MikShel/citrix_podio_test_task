@@ -23,7 +23,6 @@ public class SignInStepDef extends BaseStep {
     @Given("^I work with the system$")
     public void I_work_with_the_system() {
         I_try_to_login_with_credentials("valid");
-        I_should_see_that_I_logged_in("successfully");
     }
 
 }

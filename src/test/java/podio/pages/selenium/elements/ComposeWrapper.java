@@ -31,6 +31,10 @@ public class ComposeWrapper extends HtmlElement {
     @FindBy(css = "input.stream-embed-url")
     public TextInput linkAttachInput;
 
+    @Name("Link attach")
+    @FindBy(css = "button.tooltip.button-new.silver")
+    public TextInput linkAttachedButton;
+
     @Name("Question attach button button")
     @FindBy(css = "li.question")
     public Button questionAttachButton;
@@ -51,4 +55,7 @@ public class ComposeWrapper extends HtmlElement {
     @FindBy(css = "input.status-submit[name=\"commit\"]")
     public Button shareButton;
 
+    @Name("Space Switcher search result")
+    @FindBy(css = "div.space_listitemcontent > ul > li.focused")
+    public Button spaceSwitcherSearchReult;
 }

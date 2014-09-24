@@ -13,10 +13,12 @@ public class HomePageImpl extends CommonPage implements HomePage{
 
     private final String URL = "/home";
     private String postText;
+    WebDriver driver;
     private NavigationBox navBox;
     private GlobalStream globalStream;
 
     public HomePageImpl(WebDriver driver) {
+        this.driver=driver;
         HtmlElementLoader.populate(this, driver);
     }
 
@@ -34,6 +36,7 @@ public class HomePageImpl extends CommonPage implements HomePage{
 
     @Override
     public void checkThatPostAppear(String attach) {
+        HtmlElementLoader.populate(this, driver);
         globalStream.checkNewPost(postText, attach);
     }
 

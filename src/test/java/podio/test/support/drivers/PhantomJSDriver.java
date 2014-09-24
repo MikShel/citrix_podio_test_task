@@ -31,9 +31,13 @@ public class PhantomJSDriver {
         capabilities.setJavascriptEnabled(true);
         capabilities.setCapability("takesScreenshot", true);
 
-        org.openqa.selenium.phantomjs.PhantomJSDriver driver = new org.openqa.selenium.phantomjs.PhantomJSDriver(capabilities);
+        WebDriver driver = new org.openqa.selenium.phantomjs.PhantomJSDriver(service, capabilities);
         driver.manage().window().setSize(new Dimension(1024, 768));
         return driver;
+    }
+
+    public static void stopService(){
+        service.stop();
     }
 
 }

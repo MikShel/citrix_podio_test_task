@@ -31,8 +31,12 @@ public class ChromeDriver {
         capabilities.setJavascriptEnabled(true);
         capabilities.setCapability("takesScreenshot", true);
 
-        org.openqa.selenium.chrome.ChromeDriver driver = new org.openqa.selenium.chrome.ChromeDriver(service, capabilities);
+        WebDriver driver = new org.openqa.selenium.chrome.ChromeDriver(service, capabilities);
         driver.manage().window().setSize(new Dimension(1024, 768));
         return driver;
+    }
+
+    public static void stopService(){
+        service.stop();
     }
 }

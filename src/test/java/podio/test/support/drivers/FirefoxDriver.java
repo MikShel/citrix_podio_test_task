@@ -16,7 +16,7 @@ public class FirefoxDriver {
         capabilities.setJavascriptEnabled(true);
         capabilities.setCapability("takesScreenshot", true);
 
-        org.openqa.selenium.firefox.FirefoxDriver driver = new org.openqa.selenium.firefox.FirefoxDriver(capabilities);
+        WebDriver driver = new org.openqa.selenium.firefox.FirefoxDriver(capabilities);
         driver.manage().window().setSize(new Dimension(1024, 768));
         return driver;
     }

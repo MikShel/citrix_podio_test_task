@@ -7,8 +7,6 @@ import ru.yandex.qatools.htmlelements.annotations.Block;
 import ru.yandex.qatools.htmlelements.annotations.Name;
 import ru.yandex.qatools.htmlelements.element.HtmlElement;
 
-import java.util.List;
-
 /**
  * Created by msheliah.
  */
@@ -18,11 +16,12 @@ public class GlobalStream extends HtmlElement {
 
     private StreamActivityComposer composer;
 
-    private List<StreamPost> streamPosts;
+    private StreamPost streamPost;
     CommonSteps commonSteps = new CommonSteps();
 
 
     public void chooseMenu(String menu){
+        commonSteps.waitForElementPresent(composer);
         switch (menu){
             case "Status":
                 commonSteps.clickOn(composer.statusButton);
@@ -32,6 +31,7 @@ public class GlobalStream extends HtmlElement {
     }
 
     public void createPost(String attachment, String space, String text) {
+        commonSteps.clickOn(composer.composeWrapper.postTextInput);
         commonSteps.inputText(composer.composeWrapper.postTextInput, text);
         switch (attachment){
             case ("no"):
@@ -39,6 +39,7 @@ public class GlobalStream extends HtmlElement {
             case ("link"):
                 commonSteps.clickOn(composer.composeWrapper.linkAttachButton);
                 commonSteps.inputText(composer.composeWrapper.linkAttachInput, System.getProperty("url"));
+                commonSteps.clickOn(composer.composeWrapper.linkAttachedButton);
                 break;
             case ("question"):
                 commonSteps.clickOn(composer.composeWrapper.questionAttachButton);
@@ -47,20 +48,20 @@ public class GlobalStream extends HtmlElement {
         }
         commonSteps.clickOn(composer.composeWrapper.spaceSwitcherButton);
         commonSteps.inputText(composer.composeWrapper.spaceSwitcherSearchInput, space);
-        commonSteps.clickOn(composer.composeWrapper.shareButton);
+        commonSteps.clickOn(composer.composeWrapper.spaceSwitcherSearchReult);
+        commonSteps.waitForTextAppearInElement(composer.composeWrapper.postTextInput, "");
     }
 
     public void checkNewPost(String postText, String attachment) {
-        streamPosts.get(0);
-        commonSteps.shouldSeeElementWithText(streamPosts.get(0).postText, postText);
+        commonSteps.waitForElementWithText("div.stream-post", postText);
         switch (attachment){
             case ("no"):
                 break;
             case ("link"):
-                commonSteps.shouldSeeElementWithLink(streamPosts.get(0).attachedLink, System.getProperty("url"));
+                commonSteps.shouldSeeElementWithLink(streamPost.attachedLink, System.getProperty("url"));
                 break;
             case ("question"):
-                commonSteps.shouldSeeElement(streamPosts.get(0).questionsBlock);
+                commonSteps.shouldSeeElement(streamPost.questionsBlock);
                 break;
         }
     }
