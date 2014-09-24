@@ -6,6 +6,7 @@
 package podio.test.support;
 
 import org.openqa.selenium.WebDriver;
+import podio.test.support.drivers.ChromeDriver;
 import podio.test.support.drivers.FirefoxDriver;
 import podio.test.support.drivers.PhantomJSDriver;
 
@@ -28,6 +29,9 @@ public class Browser {
                 break;
             case "pjs":
                 driver = PhantomJSDriver.get();
+                break;
+            case "chr":
+                driver = ChromeDriver.get();
                 break;
         }
         driver.get(url);

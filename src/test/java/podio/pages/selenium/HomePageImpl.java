@@ -21,6 +21,7 @@ public class HomePageImpl extends CommonPage implements HomePage{
 
     @Override
     public void checkSuccessfulLogin() {
+        checkPage(URL, navBox);
         checkPage(URL, globalStream);
     }
 

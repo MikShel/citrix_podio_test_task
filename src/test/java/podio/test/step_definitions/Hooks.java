@@ -26,7 +26,6 @@ public class Hooks {
 
         try {
             if (scenario.isFailed()) {
-                System.err.println("Failed scenario");
                 final byte[] screenshot = ((TakesScreenshot) Browser.getDriver())
                         .getScreenshotAs(OutputType.BYTES);
                 scenario.embed(screenshot, "image/png");

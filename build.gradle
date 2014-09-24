@@ -19,7 +19,7 @@ def nonBlankLines = { it }
 def tags = hasProperty('tags') ? tags : ''             //(run scenarios with specific tag)
 def feature = hasProperty('feature') ? feature : ''    //(run specific feature)
 def url = hasProperty('url')  ? url : 'https://nextpodio.dk'                         //(run tests on custom url)
-def browser = hasProperty('browser') ? browser : 'ff'  //(run tests in specific  browser)
+def browser = hasProperty('browser') ? browser : 'pjs'  //(run tests in specific  browser)
 def debug = hasProperty('debug') ? debug : 'false'     //(enable debug mode for tests)
 
 
