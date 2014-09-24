@@ -2,7 +2,7 @@
  * Copyright (c) 2012. Strevus, Inc.  All rights reserved
  ******************************************************************************/
 
-package support.selenium.drivers;
+package podio.test.support.drivers;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;

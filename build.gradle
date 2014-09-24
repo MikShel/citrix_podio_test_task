@@ -2,13 +2,7 @@ apply plugin: 'java'
 
 repositories {
     mavenCentral()
-    mavenLocal()
-    maven {
-        url "https://oss.sonatype.org/content/repositories/releases"
-    }
-    maven {
-        url "https://repository.jboss.org/nexus/content/groups/public/"
-    }
+    //mavenLocal()
 }
 
 configurations {
@@ -17,12 +11,14 @@ configurations {
     }
 }
 
+def login = hasProperty('login') ? login : 'no'
+def pass = hasProperty('pass') ? pass : 'no'
 def environment = hasProperty('env') ? env : 'dev'     //(run tests on specific environment)
 def removeLeadingSpaces = { it.trim() }
 def nonBlankLines = { it }
 def tags = hasProperty('tags') ? tags : ''             //(run scenarios with specific tag)
 def feature = hasProperty('feature') ? feature : ''    //(run specific feature)
-def url = hasProperty('url')                           //(run tests on custom url)
+def url = hasProperty('url')  ? url : 'https://nextpodio.dk'                         //(run tests on custom url)
 def browser = hasProperty('browser') ? browser : 'ff'  //(run tests in specific  browser)
 def debug = hasProperty('debug') ? debug : 'false'     //(enable debug mode for tests)
 
@@ -35,14 +31,14 @@ def variableArgs = feature.collectMany({ ['--name', it] })
 
 def permanentArgs = [
         '--monochrome', '--format', 'pretty', '--format', 'junit:build/cucumber-report.xml',
-        '--glue', 'podio.test.cucumber.stepdefinitions', 'src/test/resources'
+        '--glue', 'podio.test.step_definitions', 'src/test/resources'
 ]
 
 permanentArgs += variableArgs + tagsArgs
 
 
 task cucumber(){
-    dependsOn assemble, compileTestJava
+    dependsOn assemble, compileJava, compileTestJava
     doLast {
 
         javaexec {
@@ -50,8 +46,10 @@ task cucumber(){
             debug=debug
             systemProperties = [
                     'url': url,
-                    'browser': browser]
-            classpath = configurations.cucumberRuntime + sourceSets.test.output
+                    'browser': browser,
+                    'login': login,
+                    'pass': pass]
+            classpath = configurations.cucumberRuntime + sourceSets.test.output + sourceSets.main.output
             args = permanentArgs
         }
     }
@@ -59,13 +57,16 @@ task cucumber(){
 
 dependencies {
 
+    compile "info.cukes:cucumber-core:1.1.8"
     compile "info.cukes:cucumber-java:1.1.8"
     compile "info.cukes:cucumber-junit:1.1.8"
     compile "ru.yandex.qatools.htmlelements:htmlelements-java:1.12"
+    compile "ru.yandex.qatools.htmlelements:htmlelements-matchers:1.12"
     compile "org.seleniumhq.selenium:selenium-java:2.43.1"
     compile "junit:junit:4.11"
     compile "com.github.detro.ghostdriver:phantomjsdriver:1.1.0"
-    compile 'org.slf4j:slf4j-api:1.7.7'
+    compile "org.slf4j:slf4j-api:1.7.7"
     compile "com.google.guava:guava:18.0"
+    //compile "com.google.api-client:google-api-client:1.18.0-rc"
 
 }
