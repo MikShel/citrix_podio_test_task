@@ -13,7 +13,7 @@ On Mac
  tags - default ''   //run scenarios with specific tag
  feature - default '' //run specific feature
  url - default 'https://nextpodio.dk' //run tests on custom url
- browser - default 'pjs'  //run tests in specific  browser ff - firefox, chm - Chrome
+ browser - default 'pjs'  //run tests in specific  browser ff - firefox, ghm - Chrome
 
 On Linux
 Change binaries of drivers in drivers folder

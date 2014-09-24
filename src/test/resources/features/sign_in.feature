@@ -1,4 +1,4 @@
-Feature: Sign in
+Feature: SignIn
   In order to use the system
   Any registered user
   Should be able to log in

@@ -30,7 +30,7 @@ public class Browser {
             case "pjs":
                 driver = PhantomJSDriver.get();
                 break;
-            case "chr":
+            case "ghm":
                 driver = ChromeDriver.get();
                 break;
         }

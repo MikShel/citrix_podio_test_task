@@ -12,6 +12,7 @@ import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
 public class HomePageImpl extends CommonPage implements HomePage{
 
     private final String URL = "/home";
+    private String postText;
     private NavigationBox navBox;
     private GlobalStream globalStream;
 
@@ -21,8 +22,19 @@ public class HomePageImpl extends CommonPage implements HomePage{
 
     @Override
     public void checkSuccessfulLogin() {
-        checkPage(URL, navBox);
         checkPage(URL, globalStream);
+    }
+
+    @Override
+    public void createPost(String attachment, String space, String text) {
+        this.postText = text;
+        globalStream.chooseMenu("Status");
+        globalStream.createPost(attachment,space, text);
+    }
+
+    @Override
+    public void checkThatPostAppear(String attach) {
+        globalStream.checkNewPost(postText, attach);
     }
 
 }

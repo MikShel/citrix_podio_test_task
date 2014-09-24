@@ -4,11 +4,13 @@ import ch.lambdaj.Lambda;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.WrapsElement;
+import ru.yandex.qatools.htmlelements.element.Form;
 import ru.yandex.qatools.htmlelements.element.Link;
 import ru.yandex.qatools.htmlelements.element.Select;
 import ru.yandex.qatools.htmlelements.element.TextInput;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
@@ -74,6 +76,11 @@ public class CommonSteps {
         assumeIfElementNotPresent(input);
         clearInput(input);
         input.sendKeys(text);
+    }
+
+    public void fill(Form form, Map<String, Object> map) {
+        assumeIfElementNotPresent(form);
+        form.fill(map);
     }
 
     public static void waitForElementPresent(WrapsElement element) {

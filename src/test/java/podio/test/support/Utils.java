@@ -20,4 +20,10 @@ public class Utils{
         return credentials;
     }
 
+    public static Map<String, Object> getQuestions() {
+        Map<String, Object> questios = new HashMap<String, Object>();
+        questios.put("question-answer[0]", "Question 1 ?");
+        questios.put("question-answer[1]", "Question 2 ?");
+        return questios;
+    }
 }
