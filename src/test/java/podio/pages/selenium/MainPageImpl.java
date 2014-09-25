@@ -11,7 +11,7 @@ import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
 
 public class MainPageImpl extends CommonPage  implements MainPage {
 
-    @Name("Enter link in the Header")
+    @Name("SignIn link in the Header")
     @FindBy(css = "span > a[data-tracking^=\"Login\"]")
     private Link enterLink;
 
@@ -22,10 +22,6 @@ public class MainPageImpl extends CommonPage  implements MainPage {
     public MainPageImpl(WebDriver driver) {
         HtmlElementLoader.populate(this, driver);
     }
-
-    public MainPageImpl() {
-    }
-
 
     @Override
     public void moveToSignIn() {

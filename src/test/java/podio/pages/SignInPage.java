@@ -6,7 +6,7 @@ public interface SignInPage {
 
     void fillCredentials (Map<String, String> credentials);
 
-    void submitForm();
+    void submitCredentials();
 
     void checkFailLogin();
 }

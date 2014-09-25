@@ -32,8 +32,8 @@ public class SignInPageImpl extends CommonPage implements SignInPage {
     }
 
     @Override
-    public void submitForm() {
-        loginForm.clickEnter();
+    public void submitCredentials() {
+        loginForm.submitCredentials();
     }
 
     @Override

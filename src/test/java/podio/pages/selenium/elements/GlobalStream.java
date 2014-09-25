@@ -43,7 +43,7 @@ public class GlobalStream extends HtmlElement {
                 break;
             case ("question"):
                 commonSteps.clickOn(composer.composeWrapper.questionAttachButton);
-                commonSteps.fill(composer.composeWrapper.questionAttachForm, Utils.getQuestions());
+                commonSteps.fill(composer.composeWrapper.questionAttachForm, Utils.getAnswers());
                 break;
         }
         commonSteps.clickOn(composer.composeWrapper.spaceSwitcherButton);

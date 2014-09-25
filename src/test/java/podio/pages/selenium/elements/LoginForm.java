@@ -24,7 +24,7 @@ public class LoginForm extends HtmlElement{
 
     @Name("Enter button")
     @FindBy(css = "button[type=\"submit\"]")
-    private Button enterButton;
+    public Button enterButton;
 
     @Name("Warning message")
     @FindBy(css = "ul.warning")
@@ -40,9 +40,10 @@ public class LoginForm extends HtmlElement{
     public void fillCredentials(String email, String pass) {
         commonSteps.inputText(emailInput, email);
         commonSteps.inputText(passInput, pass);
+        commonSteps.clickOn(enterButton);
     }
 
-    public void clickEnter(){
+    public void submitCredentials(){
         commonSteps.clickOn(enterButton);
     }
 
