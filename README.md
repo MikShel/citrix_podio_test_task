@@ -3,31 +3,38 @@ citrix_podio_test_task
 
 Test task for Podio team in denmark
 
-How to run tests
+## How to run tests
 
-On Mac
- ./gradlew cucumber 
+### On Mac
+ <pre>
+ ./gradlew cucumber
+ </pre> 
 
 Also, few parameters can be changed using -Pkey="value"
- Keys    |   Value
- login   | default 'no' //email, that will be used for tests
- pass    | default 'no' //pass, that will be used for tests
- cred    | default '/tmp/users.properties'     //(run tests with specified login/pass property file)
- ======================
- example
- users.properties
- # valid user
- login=professor@ngcblusqdbkptlwhkkge.com
- pass=professor_$ecur3Pwd
+
+
+ Keys    |  Default value  | Comment
+ ------- | -------- | -------
+ login   | 'no' | email, that will be used for tests
+ pass    | 'no' | pass, that will be used for tests
+ cred    | '/tmp/users.properties'     | run tests with specified login/pass property file, can be used without login/pass parameters
+ tags    | ''   | run scenarios with specific tag
+ feature | '' | run specific feature
+ url     | 'https://nextpodio.dk' | run tests on custom url
+ browser | 'ghm'  |run tests in specific  browser ghm - Chrome, ff - firefox, pjs - PhantomJs
  
- ======================
- tags    | default ''   //run scenarios with specific tag
- feature | default '' //run specific feature
- url     | default 'https://nextpodio.dk' //run tests on custom url
- browser | default 'ghm'  //run tests in specific  browser ghm - Chrome, ff - firefox, pjs - PhantomJs
+#### Credentials example 
+ users.properties
+<pre>
+ # valid user
+ login=login@user.com
+ pass=pass
+ </pre>
+ 
 
-On Linux
+### On Linux
 Change binaries of drivers in drivers folder
-
+ <pre>
  ./gradlew cucumber
+ </pre>
 
