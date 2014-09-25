@@ -1,7 +1,7 @@
 citrix_podio_test_task
 ======================
 
-Test task for Citrix team in denmark
+Test task for Podio team in denmark
 
 How to run tests
 
