@@ -2,7 +2,7 @@ apply plugin: 'java'
 
 repositories {
     mavenCentral()
-    //mavenLocal()
+    mavenLocal()
 }
 
 configurations {
@@ -13,14 +13,13 @@ configurations {
 
 def login = hasProperty('login') ? login : 'no'
 def pass = hasProperty('pass') ? pass : 'no'
-def environment = hasProperty('env') ? env : 'dev'     //(run tests on specific environment)
+def cred = hasProperty('cred') ? cred : '/tmp/users.properties'     //(run tests with specified login/pass user property)
 def removeLeadingSpaces = { it.trim() }
 def nonBlankLines = { it }
 def tags = hasProperty('tags') ? tags : ''             //(run scenarios with specific tag)
 def feature = hasProperty('feature') ? feature : ''    //(run specific feature)
-def url = hasProperty('url')  ? url : 'https://nextpodio.dk'                         //(run tests on custom url)
+def url = hasProperty('url')  ? url : 'https://nextpodio.dk/'                         //(run tests on custom url)
 def browser = hasProperty('browser') ? browser : 'pjs'  //(run tests in specific  browser)
-def debug = hasProperty('debug') ? debug : 'false'     //(enable debug mode for tests)
 
 
 tags = tags.split(",").collect(removeLeadingSpaces).findAll(nonBlankLines)
@@ -38,18 +37,18 @@ permanentArgs += variableArgs + tagsArgs
 
 
 task cucumber(){
-    dependsOn assemble, compileJava, compileTestJava
+    dependsOn assemble, compileTestJava
     doLast {
 
         javaexec {
             main = "cucumber.api.cli.Main"
-            debug=debug
             systemProperties = [
                     'url': url,
                     'browser': browser,
                     'login': login,
-                    'pass': pass]
-            classpath = configurations.cucumberRuntime + sourceSets.test.output + sourceSets.main.output
+                    'pass': pass,
+                    'cred': cred]
+            classpath = configurations.cucumberRuntime + sourceSets.test.output
             args = permanentArgs
         }
     }
@@ -67,6 +66,6 @@ dependencies {
     compile "com.github.detro.ghostdriver:phantomjsdriver:1.1.0"
     compile "org.slf4j:slf4j-api:1.7.7"
     compile "com.google.guava:guava:18.0"
-    //compile "com.google.api-client:google-api-client:1.18.0-rc"
+
 
 }

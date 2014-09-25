@@ -6,6 +6,9 @@ import ru.yandex.qatools.htmlelements.annotations.Block;
 import ru.yandex.qatools.htmlelements.annotations.Name;
 import ru.yandex.qatools.htmlelements.element.*;
 
+/**
+ * Created by msheliah.
+ */
 @Name("Login Form block")
 @Block(@FindBy(css = "div.with-foot"))
 public class LoginForm extends HtmlElement{
@@ -24,7 +27,7 @@ public class LoginForm extends HtmlElement{
 
     @Name("Enter button")
     @FindBy(css = "button[type=\"submit\"]")
-    private Button enterButton;
+    public Button enterButton;
 
     @Name("Warning message")
     @FindBy(css = "ul.warning")
@@ -40,9 +43,10 @@ public class LoginForm extends HtmlElement{
     public void fillCredentials(String email, String pass) {
         commonSteps.inputText(emailInput, email);
         commonSteps.inputText(passInput, pass);
+        commonSteps.clickOn(enterButton);
     }
 
-    public void clickEnter(){
+    public void submitCredentials(){
         commonSteps.clickOn(enterButton);
     }
 

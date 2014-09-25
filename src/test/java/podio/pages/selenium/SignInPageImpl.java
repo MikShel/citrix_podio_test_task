@@ -10,7 +10,9 @@ import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
 
 import java.util.Map;
 
-
+/**
+ * Created by msheliah.
+ */
 public class SignInPageImpl extends CommonPage implements SignInPage {
 
     private final String URL = "/login";
@@ -32,8 +34,8 @@ public class SignInPageImpl extends CommonPage implements SignInPage {
     }
 
     @Override
-    public void submitForm() {
-        loginForm.clickEnter();
+    public void submitCredentials() {
+        loginForm.submitCredentials();
     }
 
     @Override
