@@ -10,7 +10,9 @@ import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
 
 import java.util.Map;
 
-
+/**
+ * Created by msheliah.
+ */
 public class SignInPageImpl extends CommonPage implements SignInPage {
 
     private final String URL = "/login";

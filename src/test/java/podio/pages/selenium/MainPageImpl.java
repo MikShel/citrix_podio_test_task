@@ -8,7 +8,9 @@ import ru.yandex.qatools.htmlelements.element.Form;
 import ru.yandex.qatools.htmlelements.element.Link;
 import ru.yandex.qatools.htmlelements.loader.HtmlElementLoader;
 
-
+/**
+ * Created by msheliah.
+ */
 public class MainPageImpl extends CommonPage  implements MainPage {
 
     @Name("SignIn link in the Header")

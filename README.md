@@ -10,6 +10,13 @@ On Mac
 
  login - default 'no' //email, that will be used for tests
  pass - default 'no' //pass, that will be used for tests
+ cred - default '/tmp/users.properties'     //(run tests with specified login/pass property file)
+ example
+ users.properties{
+ # valid user
+ login=professor@ngcblusqdbkptlwhkkge.com
+ pass=professor_$ecur3Pwd
+ }
  tags - default ''   //run scenarios with specific tag
  feature - default '' //run specific feature
  url - default 'https://nextpodio.dk' //run tests on custom url

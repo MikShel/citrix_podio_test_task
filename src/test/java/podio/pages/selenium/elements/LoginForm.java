@@ -6,6 +6,9 @@ import ru.yandex.qatools.htmlelements.annotations.Block;
 import ru.yandex.qatools.htmlelements.annotations.Name;
 import ru.yandex.qatools.htmlelements.element.*;
 
+/**
+ * Created by msheliah.
+ */
 @Name("Login Form block")
 @Block(@FindBy(css = "div.with-foot"))
 public class LoginForm extends HtmlElement{

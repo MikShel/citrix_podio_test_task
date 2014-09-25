@@ -1,7 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2012. Strevus, Inc.  All rights reserved
- ******************************************************************************/
-
 package podio.test.support.drivers;
 
 import org.openqa.selenium.Dimension;
@@ -12,7 +8,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.File;
 import java.io.IOException;
 
-
+/**
+ * Created by msheliah.
+ */
 public class PhantomJSDriver {
 
     private static PhantomJSDriverService service;
@@ -28,7 +26,7 @@ public class PhantomJSDriver {
             System.err.println( "PhantomJs Service can't be started " + e.getMessage() );
         }
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setJavascriptEnabled(true);
+        capabilities.setJavascriptEnabled(false);
         capabilities.setCapability("takesScreenshot", true);
 
         WebDriver driver = new org.openqa.selenium.phantomjs.PhantomJSDriver(service, capabilities);

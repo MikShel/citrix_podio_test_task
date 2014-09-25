@@ -1,8 +1,4 @@
-/**
- * *****************************************************************************
- * Copyright (c) 2012. Strevus, Inc. All rights reserved
- * ****************************************************************************
- */
+
 package podio.test.support;
 
 import org.openqa.selenium.WebDriver;
@@ -14,7 +10,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.endsWith;
 
-
+/**
+ * Created by msheliah.
+ */
 public class Browser {
 
     private static Browser INSTANCE;

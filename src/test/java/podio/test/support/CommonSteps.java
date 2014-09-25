@@ -1,18 +1,17 @@
 package podio.test.support;
 
-import ch.lambdaj.Lambda;
-import org.hamcrest.Matchers;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.WrapsElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.yandex.qatools.htmlelements.element.*;
+import ru.yandex.qatools.htmlelements.element.Form;
+import ru.yandex.qatools.htmlelements.element.Link;
+import ru.yandex.qatools.htmlelements.element.TextInput;
 
-import java.util.List;
 import java.util.Map;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assume.assumeThat;
 import static ru.yandex.qatools.htmlelements.matchers.MatcherDecorators.should;
@@ -20,8 +19,10 @@ import static ru.yandex.qatools.htmlelements.matchers.MatcherDecorators.timeoutH
 import static ru.yandex.qatools.htmlelements.matchers.WrapsElementMatchers.exists;
 import static ru.yandex.qatools.htmlelements.matchers.WrapsElementMatchers.isDisplayed;
 
+/**
+ * Created by msheliah.
+ */
 public class CommonSteps {
-
 
     public static void shouldSeeElement(WrapsElement element) {
         assertThat(element, exists());
@@ -30,25 +31,6 @@ public class CommonSteps {
 
     public static void shouldNotSeeElement(WrapsElement element) {
         assertThat(element, should(not(isDisplayed())).whileWaitingUntil(timeoutHasExpired()));
-    }
-
-    public static void shouldSeeElementWithText(WrapsElement element, String text) {
-        assumeIfElementNotPresent(element);
-        assertThat("Текст элемента " + element + " не равен ожидаемому",
-                element.getWrappedElement().getText(), equalTo(text));
-    }
-
-    public void shouldSeeElementWithAttributeValue(WrapsElement element, String attribute, String value) {
-        assumeIfElementNotPresent(element);
-        assertThat(attribute + " элемента " + element + " не равен ожидаемому",
-                element.getWrappedElement().getAttribute(attribute), equalTo(value));
-    }
-
-    public static void shouldSeeNotEmptyListOfElements(List<? extends WrapsElement> elements) {
-        assertThat("Expect to see not empty list of elements " + elements,
-                elements,
-                not(empty())
-        );
     }
 
     public static void shouldSeeElementWithLink(Link link, String linkText) {
@@ -87,10 +69,6 @@ public class CommonSteps {
         assertThat(element, should(isDisplayed()).whileWaitingUntil(timeoutHasExpired()));
     }
 
-    public static void waitForElementNotPresent(WrapsElement element) {
-        assertThat(element, should(not(isDisplayed())).whileWaitingUntil(timeoutHasExpired()));
-    }
-
     public static void waitForElementWithText(String css, String text){
         new WebDriverWait(Browser.getDriver(), 30)
                 .until(ExpectedConditions.textToBePresentInElementLocated(
@@ -101,25 +79,6 @@ public class CommonSteps {
         assertThat(element.getText(), should(equalTo(text)).whileWaitingUntil(timeoutHasExpired()));
     }
 
-    public static void waitForElementFromListWithText(List<? extends HtmlElement> elements, String text){
-        System.err.println("!!!!! Text " + text);
-        System.err.println("!!!!! Element " + elements.get(0).getWrappedElement().getText());
-        assertThat(elements.get(0).getWrappedElement().getText(), should(containsString(text)).whileWaitingUntil(timeoutHasExpired()));
-    }
-
-    public static void selectOption(Select select, String option) {
-        assumeIfElementNotPresent(select);
-        List<String> extract =
-                Lambda.extract(select.getOptions(), Lambda.on(WebElement.class).getText());
-
-        assertThat(extract, Matchers.hasItem(option));
-        select.selectByVisibleText(option);
-        assertThat(select.getFirstSelectedOption().getText(), Matchers.equalTo(option));
-    }
-
-    public void waitForTextAppearOnPage(String text) {
-        assertThat(Browser.getDriver().getPageSource(), should(containsString(text)).whileWaitingUntil(timeoutHasExpired()));
-    }
 }
 
 

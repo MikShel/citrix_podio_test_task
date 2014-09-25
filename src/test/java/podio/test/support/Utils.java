@@ -1,7 +1,6 @@
 package podio.test.support;
 
 import org.junit.Assert;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,6 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+/**
+ * Created by msheliah.
+ */
 public class Utils{
 
     private Properties prop;
@@ -19,6 +21,7 @@ public class Utils{
         credentials.put("login", System.getProperty("login"));
         credentials.put("pass", System.getProperty("pass"));
         if (credentials.get("login").equals("no") | credentials.get("pass").equals("no")){
+            //TODO add possibility to get Credentials from db, googledoc or any other place
             Properties prop = new Properties();
             InputStream input = null;
 
