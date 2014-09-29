@@ -18,7 +18,7 @@ Also, few parameters can be changed using -Pkey="value"
  login   | 'no' | email, that will be used for tests
  pass    | 'no' | pass, that will be used for tests
  cred    | '/tmp/users.properties'     | run tests with specified login/pass property file, can be used without login/pass parameters
- tags    | ''   | run scenarios with specific tag
+ tags    | '@Test'   | run scenarios with specific tag
  feature | '' | run specific feature
  url     | 'https://nextpodio.dk' | run tests on custom url
  browser | 'ghm'  |run tests in specific  browser ghm - Chrome, ff - firefox, pjs - PhantomJs

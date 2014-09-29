@@ -10,6 +10,7 @@ Feature: SignIn
   Examples:
     | type		| status		|
     | valid		| successfully		|
+    | invalid	| unsuccessfully	|
 
 
   Scenario Outline: Login with Social accounts
