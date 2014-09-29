@@ -31,8 +31,10 @@ public class SignInStepsImpl {
         switch (validity){
             case "valid" :
                 signInPage.fillCredentials(Utils.getCredentials(true));
+                break;
             case "invalid" :
                 signInPage.fillCredentials(Utils.getCredentials(false));
+                break;
         }
         //signInPage.submitCredentials();
 
@@ -42,8 +44,10 @@ public class SignInStepsImpl {
         switch (success){
             case "successfully" :
                 homePage.checkSuccessfulLogin();
+                break;
             case "unsuccessfully" :
                 signInPage.checkFailLogin();
+                break;
         }
     }
 }
